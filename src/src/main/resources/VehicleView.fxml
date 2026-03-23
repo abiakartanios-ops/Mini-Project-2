@@ -1,0 +1,12 @@
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.demo1.VehicleController" spacing="10">
+    <TextField fx:id="makeInput" promptText="Car Make"/>
+    <TextField fx:id="modelInput" promptText="Car Model"/>
+    <Button text="Save Vehicle" onAction="#handleSave"/>
+    <TableView fx:id="vehicleTable">
+        <columns>
+            <TableColumn fx:id="makeCol" text="Make"/>
+            <TableColumn fx:id="modelCol" text="Model"/>
+        </columns>
+    </TableView>
+</VBox>

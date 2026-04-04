@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="StudentController"
+            prefWidth="1000" prefHeight="600"
+            style="-fx-background-color: linear-gradient(to right, #4facfe, #00f2fe);">
+
+    <HBox spacing="50"
+          alignment="CENTER"
+          AnchorPane.topAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0">
+
+        <!-- LEFT -->
+        <VBox spacing="12" prefWidth="250">
+
+            <Label text="Students"
+                   style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+            <Label text="Manage your students easily" style="-fx-text-fill: white;"/>
+
+            <Label text="Student ID" style="-fx-text-fill: white;"/>
+            <TextField fx:id="idField"/>
+
+            <Label text="First Name" style="-fx-text-fill: white;"/>
+            <TextField fx:id="firstField"/>
+
+            <Label text="Last Name" style="-fx-text-fill: white;"/>
+            <TextField fx:id="lastField"/>
+
+            <Label text="Age" style="-fx-text-fill: white;"/>
+            <TextField fx:id="ageField"/>
+
+            <Label text="Email" style="-fx-text-fill: white;"/>
+            <TextField fx:id="emailField"/>
+
+        </VBox>
+
+        <!-- RIGHT -->
+        <VBox spacing="15"
+              alignment="CENTER"
+              style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20;">
+
+            <Label text="Students Management"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <Label text="Students list"/>
+
+            <TableView fx:id="table" prefWidth="750" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="idCol" text="ID"/>
+                    <TableColumn fx:id="firstCol" text="First Name"/>
+                    <TableColumn fx:id="lastCol" text="Last Name"/>
+                    <TableColumn fx:id="ageCol" text="Age"/>
+                    <TableColumn fx:id="emailCol" text="Email" prefWidth="250"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER">
+
+                <Button text="Add"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 10;"
+                        onAction="#addStudent"/>
+
+                <Button text="Update"
+                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-background-radius: 10;"
+                        onAction="#updateStudent"/>
+
+                <Button text="Delete"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 10;"
+                        onAction="#deleteStudent"/>
+
+                <Button text="Clear"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-background-radius: 10;"
+                        onAction="#clearFields"/>
+
+            </HBox>
+
+        </VBox>
+
+    </HBox>
+
+</AnchorPane>

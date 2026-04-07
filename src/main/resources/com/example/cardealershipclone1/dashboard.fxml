@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.cardealershipclone1.controllers.DashboardController"
+      style="-fx-background-color: #f9fafb;">
+
+    <!-- Header -->
+    <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="10"
+          style="-fx-background-color: #e8edf2;">
+        <padding>
+            <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+
+        <Label fx:id="headerLabel" text="🚗 Add New Car" textFill="#00008B">
+            <font>
+                <Font name="Arial Bold" size="24"/>
+            </font>
+        </Label>
+
+        <Label fx:id="countLabel" text="" textFill="GRAY">
+            <font>
+                <Font name="Arial" size="13"/>
+            </font>
+        </Label>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="toggleSceneButton" text="📋 View Inventory" onAction="#handleToggleScene"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;"/>
+
+        <Button text="🔒 Logout" onAction="#handleLogout"
+                style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- StackPane to hold both form and table scenes -->
+    <StackPane fx:id="contentPane" VBox.vgrow="ALWAYS">
+
+        <!-- Form Scene (Initial) -->
+        <VBox fx:id="formScene" spacing="15" style="-fx-background-color: #f9fafb;">
+            <padding>
+                <Insets top="10" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <GridPane hgap="20" vgap="12">
+                <padding>
+                    <Insets top="20"/>
+                </padding>
+
+                <!-- Column 1 -->
+                <Label text="Make (Manufacturer):" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <TextField fx:id="makeField" promptText="e.g., Toyota, Ford, BMW" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Model:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <TextField fx:id="modelField" promptText="e.g., Camry, Mustang, X5" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Year:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <Spinner fx:id="yearSpinner" editable="true" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Label text="Price (USD):" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <TextField fx:id="priceField" promptText="e.g., 25000.00" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <!-- Column 2 -->
+                <Label text="Color:" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <ComboBox fx:id="colorCombo" promptText="Select a color" prefWidth="200" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                <Label text="Mileage (miles):" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <TextField fx:id="mileageField" promptText="e.g., 15000" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                <Label text="VIN (Vehicle ID Number):" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <TextField fx:id="vinField" promptText="7-character VIN MAX" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+                <Label text="Fuel Type:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <ComboBox fx:id="fuelCombo" promptText="Select fuel type" prefWidth="200" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                <Label text="Condition:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <font><Font name="Arial" size="13"/></font>
+                </Label>
+                <CheckBox fx:id="isNewCheckBox" text="Brand New" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button text="✅ Add Car to Inventory" prefWidth="250" prefHeight="38" onAction="#handleSubmit"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;"/>
+
+                <Button text="🗑 Clear Form" prefHeight="38" onAction="#handleClear"
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <Label fx:id="statusLabel">
+                <font><Font name="Arial" size="12"/></font>
+            </Label>
+        </VBox>
+
+        <!-- Table Scene (Hidden initially) -->
+        <VBox fx:id="tableScene" visible="false" style="-fx-background-color: #f9fafb;" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS"/>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10" right="20" bottom="10" left="20"/>
+                </padding>
+
+                <Button fx:id="deleteBtn" text="🗑 Delete Selected Car" disable="true" onAction="#handleDelete"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 5;"/>
+
+                <Label fx:id="tableStatusLabel">
+                    <font><Font name="Arial" size="12"/></font>
+                </Label>
+            </HBox>
+        </VBox>
+    </StackPane>
+</VBox>

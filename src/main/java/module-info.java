@@ -5,6 +5,7 @@ module com.example.cardealershipclone1 {
     opens com.example.cardealershipclone1 to javafx.fxml;
     opens com.example.cardealershipclone1.controllers to javafx.fxml;
 
+    exports com.example.demo1;
     exports com.example.cardealershipclone1;
     exports com.example.cardealershipclone1.controllers;
     exports com.example.cardealershipclone1.models;

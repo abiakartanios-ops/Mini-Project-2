@@ -8,7 +8,8 @@ public class Users {
 
     static {
         userList.add(new User("tanios", "tanios123"));  // Tanios's account
-        userList.add(new User("ralph", "123456"));       // Ralph's account
+        userList.add(new User("ralph", "123456"));// Ralph's account
+        userList.add(new User("hussein", "123456"));
     }
 
     public static boolean validate(String username, String password) {

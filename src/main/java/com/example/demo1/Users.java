@@ -9,6 +9,7 @@ public class Users {
     static {
         userList.add(new User("admin", "123456"));
         userList.add(new User("Ralph", "123456"));
+        userList.add(new User("hussein","123456"));
     }
 
     public static boolean validate(String username, String password) {

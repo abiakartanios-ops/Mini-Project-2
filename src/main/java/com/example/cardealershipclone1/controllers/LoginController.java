@@ -9,42 +9,41 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-public class LoginController {
 
+public class LoginController {
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;
 
-    @FXML
-    private void handleLogin() {
-        String user = usernameField.getText().trim();
-        String pass = passwordField.getText();
 
-        if (Users.validate(user, pass)) {
-            try {
-                Stage stage = (Stage) usernameField.getScene().getWindow();
 
-                URL fxmlLocation = getClass().getResource("/com/example/cardealershipclone1/homeview.fxml");
-                if (fxmlLocation == null) {
-                    fxmlLocation = getClass().getResource("/homeview.fxml");
-                }
+   @FXML
+   private void handleLogin() {
+       String user = usernameField.getText().trim();
+       String pass = passwordField.getText().trim();
 
-                if (fxmlLocation == null) {
-                    errorLabel.setText("Critical Error: homeview.fxml not found!");
-                    return;
-                }
+       if (Users.validate(user, pass)) {
+           try {
+               Stage stage = (Stage) usernameField.getScene().getWindow();
 
-                FXMLLoader loader = new FXMLLoader(fxmlLocation);
-                Scene scene = new Scene(loader.load(), 650, 500);
-                stage.setScene(scene);
-                stage.setTitle("Company Management - Welcome, " + user + "!");
+               URL fxmlLocation = getClass().getResource("/com/example/cardealershipclone1/homeview.fxml");
 
-            } catch (IOException e) {
-                errorLabel.setText("Error loading the dashboard.");
-                e.printStackTrace();
-            }
-        } else {
-            errorLabel.setText("Invalid credentials. Please try again.");
-        }
-    }
-}
+               if (fxmlLocation == null) {
+                   errorLabel.setText("HomeView not found!");
+                   return;
+               }
+
+               FXMLLoader loader = new FXMLLoader(fxmlLocation);
+               Scene scene = new Scene(loader.load(), 650, 500);
+               stage.setScene(scene);
+               stage.setResizable(true);
+               stage.setTitle("Home");
+
+           } catch (IOException e) {
+               errorLabel.setText("Error loading Home.");
+               e.printStackTrace();
+           }
+       } else {
+           errorLabel.setText("Invalid credentials.");
+       }
+   }}

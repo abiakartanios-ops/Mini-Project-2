@@ -12,7 +12,7 @@ public class HomeController {
 
     @FXML private Button personsMngBtn;
     @FXML private Button ralphMngBtn;
-    @FXML private Button clientMngBtn;;
+    @FXML private Button clientMngBtn;
 
     @FXML
     private void openPersonsMng() {
@@ -63,8 +63,25 @@ public class HomeController {
             e.printStackTrace();
         }
     }
-    @FXML
+@FXML
     private void openClientMng() {
-        System.out.println("Opening Client Management...");
+        try {
+            Stage stage = (Stage) clientMngBtn.getScene().getWindow();
+
+            URL fxmlLocation = getClass().getResource("/com/example/cardealershipclone1/ClientsView.fxml");
+
+            if (fxmlLocation == null) {
+                System.out.println("ClientsView not found!");
+                return;
+            }
+
+            FXMLLoader loader = new FXMLLoader(fxmlLocation);
+            Scene scene = new Scene(loader.load(), 1000, 800);
+            stage.setScene(scene);
+            stage.setTitle("Client Management");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

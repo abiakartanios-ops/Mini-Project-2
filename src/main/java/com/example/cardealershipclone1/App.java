@@ -12,9 +12,9 @@ public class App extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/cardealershipclone1/login.fxml"));
             Scene scene = new Scene(loader.load(), 420, 480);
-
+            primaryStage.setResizable(true);
             primaryStage.setTitle("Company Management- Sign In");
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {

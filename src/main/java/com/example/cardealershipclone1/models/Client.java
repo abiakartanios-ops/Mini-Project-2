@@ -1,6 +1,7 @@
 package com.example.cardealershipclone1.models;
 
 public class Client {
+
     private int id;
     private String name;
     private String phone;

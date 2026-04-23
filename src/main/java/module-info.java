@@ -1,6 +1,7 @@
 module com.example.cardealershipclone1 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
     opens com.example.cardealershipclone1 to javafx.fxml;
     opens com.example.cardealershipclone1.controllers to javafx.fxml;
